@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Update Product Inventory</title>
+</head>
+<body>
+<h1>Product Inventory As of Now</h1>
+<ul type="none">
+    <li th:each="inventory:${inventories}">
+        <h2 >
+            Product Name: <span th:text="${inventory.getProduct().getName()}"></span>
+            <br>Size: <span th:text="${inventory.getSize()}"></span><br>
+           In house Quantity: <span th:text="${inventory.getInhouseqty()}"></span>
+        </h2>
+        <form method="post" th:action="@{/admin/updateProductInventory/{id}(id=${product.getId()})}" th:object="${inventoryToUpdate}">
+            Quantity: <input type="text" name="quantity" th:field="*{inhouseqty}" th:value="${inventory.getInhouseqty()}" required>
+            Size: <select name="sizes" th:field="*{size}" required>
+                <option th:value="${inventory.getSize()}" th:text="${inventory.getSize()}"> </option>
+
+            </select>
+
+            <button type="submit" name="action" value="Update Inventory">Update Inventory</button>
+        </form>
+    </li>
+</ul>
+<form method="post" th:action="@{/admin/updateProductInventory/{id}(id=${product.getId()})}" th:object="${inventoryToAdd}">
+    Quantity: <input type="text" name="quantity" th:field="*{inhouseqty}" placeholder="In house Quantity" pattern="^[0-9]*$" title="Quantity should be positive" required >
+  Size: <select name="sizes" th:field="*{size}" required>
+        <option value="S">S</option>
+        <option value="M">M</option>
+        <option value="L">L</option>
+        <option value="XL">XL</option>
+        <option value="XXL">XXL</option>
+    </select>
+    <button type="submit" name="action" value="Add Inventory">Add Inventory</button>
+</form>
+<form method="post" action="/admin" >
+    <button value="submit" type="submit">Back to home</button>
+</form>
+</body>
+</html>

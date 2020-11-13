@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Update Product Info</title>
+</head>
+<body>
+<h3>Update Product Info</h3>
+<form method="post" th:action="@{/admin/updateProductInfo/{id}(id=${product.getId()})}" th:object="${product}">
+    <br>Product Name: <input type="text" name="name of Product" th:field="*{name}" placeholder="name of Product" required>
+    <br><br>Product Brand: <input type="text" name="brand of Product" th:field="*{brand}" placeholder="brand of Product" required>
+    <br><br>Price: <input type="text" name="price of Product" th:field="*{price}" placeholder="price of Product" pattern="^[1-9][0-9]*$" required>
+    <br><br>Discount: <input type="text" name="Discount (if any)" th:field="*{discount}" placeholder="discount" pattern="^[0-9]*$">
+    <br><br>Description: <input type="text" name="Description" th:field="*{description}" placeholder="description">
+    <br><br><button type="submit" value="Update Product Info">Update Product Info</button>
+</form>
+<form method="post" action="/admin" >
+    <br><br><button value="submit" type="submit">Back to home</button>
+</form>
+</body>
+</html>

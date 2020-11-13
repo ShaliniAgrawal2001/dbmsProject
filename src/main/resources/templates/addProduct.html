@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8" >
+    <title>Add Product</title>
+</head>
+<body>
+<h1>
+Add Product Details!</h1>
+<form  method="post" th:action="@{/admin/addProduct/{id}(id=${category.getId()})}" th:object="${product}">
+
+						Name of Product:
+        <input type="text" name="name of Product" th:field="*{name}" placeholder="name of Product" required>
+						 Brand of Product:
+					     <input class="input100" type="text" name="brand of Product" th:field="*{brand}" placeholder="brand of Product" required>
+						 Price of Product:
+
+        <input  type="text" name="price of Product" th:field="*{price}" placeholder="price of Product" required pattern="^[1-9][0-9]*$">
+
+						 Discount(if any):
+
+        <input type="text" name="Discount (if any)" th:field="*{discount}" placeholder="discount" pattern="^[0-9]*$">
+
+
+
+						 Description:
+
+        <input  type="description" name="description" th:field="*{description}" placeholder="description" required>
+
+    <button  type="submit" value="Add Product">Add Product</button>
+
+</form>
+<form method="post" action="/admin" >
+    <button value="submit" type="submit">Back to home</button>
+</form>
+
+</body>
+</html>

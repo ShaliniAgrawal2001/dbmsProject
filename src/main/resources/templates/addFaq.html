@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Add FAQ</title>
+</head>
+<body>
+<h1>Add FAQ</h1>
+<form  method="post" th="admin/addFaq" th:object="${faq}">
+    Question:
+
+    <input type="text" name="question" th:field="*{ques}" placeholder="Question" required>
+    Answer:
+
+    <input type="text" name="answer" th:field="*{ans}" placeholder="Answer" required>
+
+    <button value="submit" type="submit">add FAQ</button>
+
+</form>
+
+<form method="post" action="/admin" >
+    <button value="submit" type="submit">Back to home</button>
+</form>
+</body>
+</html>

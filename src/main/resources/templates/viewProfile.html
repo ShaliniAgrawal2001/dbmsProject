@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>View Your Profile</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!--===============================================================================================-->
+    <link rel="icon" type="image/png" href="images/icons/faviconn.ico"/>
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="vendor/bootstrap/css/bootstrap.min.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="fonts/font-awesome-4.7.0/css/font-awesome.min.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="fonts/Linearicons-Free-v1.0.0/icon-font.min.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="vendor/animate/animate.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="vendor/css-hamburgers/hamburgers.min.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="vendor/animsition/css/animsition.min.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="vendor/select2/select2.min.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="vendor/daterangepicker/daterangepicker.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="css/util.css">
+    <link rel="stylesheet" type="text/css" href="css/main.css">
+</head>
+<body>
+<div class="limiter">
+    <div class="container-login100">
+        <div class="wrap-login100 p-l-85 p-r-85 p-t-55 p-b-55">
+            <form class="login100-form validate-form flex-sb flex-w" th:action="@{/viewProfile}" th:object="${user}" method="post">
+    <span class="login100-form-title p-b-32">
+						Your Details
+					</span>
+                <span class="txt1 p-b-11">
+						First Name
+					</span>
+                <div class="wrap-input100 validate-input m-b-36" data-validate = "First Name required">
+                <input class="input100" name="firstName"  type="text"  th:field="*{firstName}" th:value="${user.getFirstName()}" required>
+                    <span class="focus-input100"></span>
+                </div>
+                <span class="txt1 p-b-11">
+						Last Name
+					</span>
+                <div class="wrap-input100 validate-input m-b-36" data-validate = "Last Name required">
+                    <input class="input100" name="lastName" type="text"  th:field="*{lastName}" th:value="${user.getLastName()}" required>
+                    <span class="focus-input100"></span>
+                </div>
+                <span class="txt1 p-b-11">
+						Phone Number
+					</span>
+                <div class="wrap-input100 validate-input m-b-36" data-validate = "Phone Number is required">
+                    <input class="input100" name="phoneNo"  type="text" th:field="*{phoneNo}" pattern="^[2-9]{2}[0-9]{8}$" th:value="${user.getPhoneNo()}" required>
+                    <span class="focus-input100"></span>
+                </div>
+                <span class="txt1 p-b-11">
+						Home Number
+					</span>
+                <div class="wrap-input100 validate-input m-b-36" data-validate = "Home Number is required">
+                    <input class="input100" name="homeNo" type="text" th:field="*{homeNo}" th:value="${user.getHomeNo()}" required>
+                    <span class="focus-input100"></span>
+                </div>
+                <span class="txt1 p-b-11">
+						Building Name
+					</span>
+                <div class="wrap-input100 validate-input m-b-36" data-validate = "Building Name is required">
+                    <input class="input100" name="buildingName" type="text" th:field="*{buildingName}" th:value="${user.getBuildingName()}" required>
+                    <span class="focus-input100"></span>
+                </div>
+                <span class="txt1 p-b-11">
+						Landmark
+					</span>
+                <div class="wrap-input100 validate-input m-b-36" data-validate = "Landmark is required">
+                    <input class="input100" name="landmark" type="text" th:field="*{landmark}" th:value="${user.getLandmark()}" required>
+                    <span class="focus-input100"></span>
+                </div>
+                <span class="txt1 p-b-11">
+						City
+					</span>
+                <div class="wrap-input100 validate-input m-b-36" data-validate = "City is required">
+                    <input class="input100" name="city" type="text" th:field="*{city}" th:value="${user.getCity()}" required>
+                    <span class="focus-input100"></span>
+                </div>
+                <span class="txt1 p-b-11">
+						State
+					</span>
+                <div class="wrap-input100 validate-input m-b-36" data-validate = "State is required">
+                    <input class="input100" name="state" type="text" th:field="*{state}" th:value="${user.getState()}" required>
+                    <span class="focus-input100"></span>
+                </div>
+                <span class="txt1 p-b-11">
+						Pincode
+					</span>
+                <div class="wrap-input100 validate-input m-b-36" data-validate = "Pincode is required">
+                    <input class="input100" name="pincode"  type="text" th:field="*{pincode}" pattern="^[0-9]{6}$" th:value="${user.getPincode()}" required>
+                    <span class="focus-input100"></span>
+                </div>
+                <div class="container-login100-form-btn">
+
+        <button class="login100-form-btn" name="Edit Profile" type="submit" value="Edit Profile" > Edit Profile</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+</body>
+</html>

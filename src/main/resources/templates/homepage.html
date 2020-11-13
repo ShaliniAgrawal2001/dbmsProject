@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>homepage</title>
+</head>
+<body>
+
+<span th:if="${isLoggedIn}=='no'">
+<p align="right"><a href="/login" > Login</a>  |
+    <a href="/register">Register</a>
+</p>
+    </span>
+<h3 th:if="${isLoggedIn}=='yes'" th:align="right">
+    Hi, <span th:text="${user.getFirstName()}"></span>!   <a href="/welcome">Go to Main Page</a>
+</h3>
+<img th:src="@{images/magnet.png}" width="100%" height=300 />
+<p><b>Magnet Mens wear</b> is a showroom for Men located in Ahmedabad, Gujarat. All kinds of Clothing products from all brands for men are available here.
+    We have great collection from Bombay, Delhi, etc. <br><br>For any queries you may reach out to us at <b>magnetmenswear2015@gmail.com</b> </p>
+<p>Address of the Showroom: <b>Magnet Mens Wear, G-43, Shukan Mall, Nr. Rajasthan Hospital, Shahibaug, Ahmedabad, Gujarat 380004</b></p>
+<h1>Owner Details:</h1>
+<p>
+    NaveenKumar Bansal<br>
+    Mob Number: 9824359359<br>
+    email id: naveen21sep@gmail.com
+</p>
+<h1>Terms and Conditions for Return/Exchange Policies:</h1>
+<ul>
+    <li>You can only return or exchange items within a week after you have purchased</li>
+    <li>For exchange or return of items, you can visit the store between 10 AM to 12 PM from monday to friday</li>
+</ul>
+<h1>Frequenty Asked Questions:</h1>
+<ol>
+    <li th:each="faq:${faqs}"><b><span th:text="${faq.getQues()}"></span></b><br>
+        <span th:text="${faq.getAns()}"></span>
+    </ol>
+</body>
+</html>
