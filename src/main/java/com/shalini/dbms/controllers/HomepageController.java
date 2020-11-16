@@ -35,16 +35,16 @@ public class HomepageController {
 
 
 
-//    @RequestMapping({"/", "", "/homepage"})
-//    public String homepage(Model model) {
-//        model.addAttribute("faqs",faqRepository.findAll());
-//        if(securityService.findLoggedInUsername()!=null){
-//            model.addAttribute("user",userService.findByUsername(securityService.findLoggedInUsername()));
-//        model.addAttribute("isLoggedIn","yes");}
-//        else
-//        model.addAttribute("isLoggedIn","no");
-//        return "homepage";
-//    }
+    @RequestMapping({"/", "", "/homepage"})
+    public String homepage(Model model) {
+        model.addAttribute("faqs",faqRepository.findAll());
+        if(securityService.findLoggedInUsername()!=null){
+            model.addAttribute("user",userService.findByUsername(securityService.findLoggedInUsername()));
+        model.addAttribute("isLoggedIn","yes");}
+        else
+        model.addAttribute("isLoggedIn","no");
+        return "homepage";
+    }
 
     @RequestMapping({"/feedback"})
     public String feedback(Model model)
