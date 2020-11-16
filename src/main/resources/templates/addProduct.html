@@ -2,34 +2,120 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8" >
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Add Product</title>
+    <link rel="stylesheet" href="style.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+        form {
+            width: 30%;
+            margin: 60px auto;
+            background: #efefef;
+            padding: 60px 120px 80px 120px;
+            text-align: center;
+            -webkit-box-shadow: 2px 2px 3px rgba(0,0,0,0.1);
+            box-shadow: 2px 2px 3px rgba(0,0,0,0.1);
+        }
+        label {
+            display: block;
+            position: relative;
+            margin: 40px 0px;
+        }
+        .label-txt {
+            position: absolute;
+            top: -1.6em;
+            padding: 10px;
+            font-family: sans-serif;
+            font-size: .8em;
+            letter-spacing: 1px;
+            color: rgb(120,120,120);
+            transition: ease .3s;
+        }
+        .input {
+            width: 100%;
+            padding: 10px;
+            background: transparent;
+            border: none;
+            outline: none;
+        }
+        .line-box {
+            position: relative;
+            width: 100%;
+            height: 2px;
+            background: #BCBCBC;
+        }
+        .line {
+            position: absolute;
+            width: 0%;
+            height: 2px;
+            top: 0px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: #8BC34A;
+            transition: ease .6s;
+        }
+        .input:focus + .line-box .line {
+            width: 100%;
+        }
+        .label-active {
+            top: -3em;
+        }
+        button {
+            display: inline-block;
+            padding: 12px 24px;
+            background: rgb(220,220,220);
+            font-weight: bold;
+            color: rgb(120,120,120);
+            border: none;  outline: none;
+            border-radius: 3px;
+            cursor: pointer;
+
+            transition: ease .3s;
+        }
+        button:hover {
+            background: #8BC34A;
+            color: #ffffff;
+        }
+    </style>
 </head>
 <body>
-<h1>
-Add Product Details!</h1>
-<form  method="post" th:action="@{/admin/addProduct/{id}(id=${category.getId()})}" th:object="${product}">
+<div>
+    <form  method="post" th:action="@{/admin/addProduct/{id}(id=${category.getId()})}" th:object="${product}">
+        <h2 class="text-warning text-center pt-5">Add Product Details!</h2>
+        <label>
+            <input type="text" class="input" name="product name" th:field="*{name}" placeholder="Enter product name" required/>
+            <div class="line-box">
+                <div class="line"></div>
+            </div>
+        </label>
+        <label>
+            <input type="text" class="input" name="product brand" th:field="*{brand}" placeholder="Enter product brand" required/>
+            <div class="line-box">
+                <div class="line"></div>
+            </div>
+        </label>
+        <label>
+            <input type="text" class="input" name="product price" th:field="*{price}" placeholder="Enter product price" pattern="^[1-9][0-9]*$" required/>
+            <div class="line-box">
+                <div class="line"></div>
+            </div>
+        </label>
+        <label>
+            <input type="text" class="input" name="product discount" th:field="*{discount}" placeholder="Enter product discount (if any)" pattern="^[0-9]*$"/>
+            <div class="line-box">
+                <div class="line"></div>
+            </div>
+        </label>
+        <label>
+            <input type="text" class="input" name="product description" th:field="*{description}" placeholder="Enter product description" required/>
+            <div class="line-box">
+                <div class="line"></div>
+            </div>
+        </label>
+        <button value="Add Product" type="submit">Add Product</button>
+    </form>
+</div>
 
-						Name of Product:
-        <input type="text" name="name of Product" th:field="*{name}" placeholder="name of Product" required>
-						 Brand of Product:
-					     <input class="input100" type="text" name="brand of Product" th:field="*{brand}" placeholder="brand of Product" required>
-						 Price of Product:
-
-        <input  type="text" name="price of Product" th:field="*{price}" placeholder="price of Product" required pattern="^[1-9][0-9]*$">
-
-						 Discount(if any):
-
-        <input type="text" name="Discount (if any)" th:field="*{discount}" placeholder="discount" pattern="^[0-9]*$">
-
-
-
-						 Description:
-
-        <input  type="description" name="description" th:field="*{description}" placeholder="description" required>
-
-    <button  type="submit" value="Add Product">Add Product</button>
-
-</form>
 <form method="post" action="/admin" >
     <button value="submit" type="submit">Back to home</button>
 </form>
