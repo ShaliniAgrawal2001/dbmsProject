@@ -41,20 +41,20 @@ return products;
 
     public List<ProductsInCart> findProductsByCartId(int id)
     {
-        String sqlQuery = "select * from productsInCart where cart_id='"+id+"'";
+        String sqlQuery = "select * from ProductsInCart where cart_id='"+id+"'";
         List <ProductsInCart> products= jdbcTemplate.query(sqlQuery,productsIncartRowMapper);
         return products;
     }
 
     public void addToCart(ProductsInCart productsInCart)
     {
-        String query = "insert into productsInCart(cart_id, product_id, size, quantity) values(?,?,?,?)";
+        String query = "insert into ProductsInCart(cart_id, product_id, size, quantity) values(?,?,?,?)";
                 jdbcTemplate.update(query,productsInCart.getCart().getId(),productsInCart.getProduct().getId(),productsInCart.getSize(),productsInCart.getQty());
     }
 
     public int getTotalPrice(int cartId)
     {
-        String query = "select * from productsInCart where cart_id='"+cartId+"'";
+        String query = "select * from ProductsInCart where cart_id='"+cartId+"'";
         List<ProductsInCart> products = jdbcTemplate.query(query,productsIncartRowMapper);
         int totalPrice=0;
         for(int i=0;i<products.size();i++)
@@ -64,13 +64,13 @@ return products;
 
     public void removeFromCart(int id)
     {
-        String query = "delete from productsInCart where id='"+id+"'";
+        String query = "delete from ProductsInCart where id='"+id+"'";
         jdbcTemplate.update(query);
     }
 
     public ProductsInCart findBySizeCartIdProductId(String size, int cartId, int productId)
     {
-        String query = "select * from productsInCart where size='"+size+"' AND cart_id='"+cartId+"' AND product_id='"+productId+"'";
+        String query = "select * from ProductsInCart where size='"+size+"' AND cart_id='"+cartId+"' AND product_id='"+productId+"'";
         try{
         ProductsInCart productsInCart = jdbcTemplate.queryForObject(query,productsIncartRowMapper);
         return productsInCart;}
@@ -85,13 +85,13 @@ return products;
 
     public void emptyCart(int id)
     {
-        String query = "delete from productsInCart where cart_id = '"+id+"'";
+        String query = "delete from ProductsInCart where cart_id = '"+id+"'";
         jdbcTemplate.update(query);
     }
 
     public ProductsInCart findById(int id)
     {
-        String query = "select * from productsInCart where id = '"+id+"'";
+        String query = "select * from ProductsInCart where id = '"+id+"'";
         return(jdbcTemplate.queryForObject(query,productsIncartRowMapper));
     }
 }
