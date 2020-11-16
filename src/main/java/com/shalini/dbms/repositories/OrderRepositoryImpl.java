@@ -43,7 +43,7 @@ public class OrderRepositoryImpl implements OrderRepository {
 
     public void addRow(Order order) {
 
-            String query = "insert into Orders(customer_id, total_amount, time_of_purchase,recieved_from_store) values(?,?,?,?)";
+            String query = "insert into orders(customer_id, total_amount, time_of_purchase,recieved_from_store) values(?,?,?,?)";
             DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss");
             LocalDateTime now = LocalDateTime.now();
             jdbcTemplate.update(query, order.getCustomer().getId(),order.getTotalAmount(),dtf.format(now),"NO");
@@ -51,25 +51,25 @@ public class OrderRepositoryImpl implements OrderRepository {
 
     public List<Order> notRecievedOrder()
     {
-        String query = "select * from Orders where recieved_from_store='NO'";
+        String query = "select * from orders where recieved_from_store='NO'";
         return jdbcTemplate.query(query,orderRowMapper);
     }
 
     public void markRecieved(int id)
     {
-        String query = "update Orders set recieved_from_store='YES' where id='"+id+"'";
+        String query = "update orders set recieved_from_store='YES' where id='"+id+"'";
         jdbcTemplate.update(query);
     }
 
     public Order getId(String timeOfPurchase)
     {
-        String query ="select * from Orders where time_of_purchase='"+timeOfPurchase+"'";
+        String query ="select * from orders where time_of_purchase='"+timeOfPurchase+"'";
         return jdbcTemplate.queryForObject(query,orderRowMapper);
     }
 
     public List<Order> findAll(int customerId)
     {
-        String query = "select * from Orders where customer_id='"+customerId+"'";
+        String query = "select * from orders where customer_id='"+customerId+"'";
         return jdbcTemplate.query(query,orderRowMapper);
     }
 
