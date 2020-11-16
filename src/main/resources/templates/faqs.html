@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Frequently asked Questions</title>
+</head>
+<body>
+<h1>Frequenty Asked Questions:</h1>
+<ol>
+    <li th:each="faq:${faqs}"><b><span th:text="${faq.getQues()}"></span></b><br>
+        <span th:text="${faq.getAns()}"></span>
+</ol>
+</body>
+</html>

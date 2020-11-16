@@ -2,18 +2,58 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
+    <style>
+        #nav ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+            background-color: #333;
+            position: -webkit-sticky; /* Safari */
+            position: sticky;
+            top: 0;
+        }
+
+        #nav li {
+            float: left;
+        }
+
+        #nav li a {
+            display: block;
+            color: white;
+            text-align: center;
+            padding: 14px 16px;
+            text-decoration: none;
+        }
+
+        #nav li a:hover {
+            background-color: #111;
+        }
+    </style>
     <title>homepage</title>
 </head>
 <body>
-
+<div id="nav">
+    <ul>
+        <li>
 <span th:if="${isLoggedIn}=='no'">
-<p align="right"><a href="/login" > Login</a>  |
-    <a href="/register">Register</a>
-</p>
-    </span>
-<h3 th:if="${isLoggedIn}=='yes'" th:align="right">
-    Hi, <span th:text="${user.getFirstName()}"></span>!   <a href="/welcome">Go to Main Page</a>
-</h3>
+<a href="/login">Login</a>
+</span></li>
+        <li>
+<span th:if="${isLoggedIn}=='no'">
+<a href="/register">Register</a>
+</span>
+        </li>
+        <li>
+<span th:if="${isLoggedIn}=='yes'">
+  <a href="/welcome">  Hi, <span th:text="${user.getFirstName()}"></span>! </a>
+</span>
+        </li>
+        <li><a href="/faqs">FAQs</a></li>
+        <li><a href="/categories">Product Categories</a></li>
+        <li><a href="bestOffers">Best Offers</a></li>
+    </ul>
+</div>
 <img th:src="@{images/magnet.png}" width="100%" height=300 />
 <p><b>Magnet Mens wear</b> is a showroom for Men located in Ahmedabad, Gujarat. All kinds of Clothing products from all brands for men are available here.
     We have great collection from Bombay, Delhi, etc. <br><br>For any queries you may reach out to us at <b>magnetmenswear2015@gmail.com</b> </p>
@@ -29,10 +69,6 @@
     <li>You can only return or exchange items within a week after you have purchased</li>
     <li>For exchange or return of items, you can visit the store between 10 AM to 12 PM from monday to friday</li>
 </ul>
-<h1>Frequenty Asked Questions:</h1>
-<ol>
-    <li th:each="faq:${faqs}"><b><span th:text="${faq.getQues()}"></span></b><br>
-        <span th:text="${faq.getAns()}"></span>
-    </ol>
+
 </body>
 </html>
