@@ -13,6 +13,7 @@ import org.springframework.boot.web.servlet.error.ErrorController;
 import org.springframework.context.ApplicationEventPublisher;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -31,9 +32,10 @@ public class HomepageController {
         this.faqRepository = faqRepository;
     }
 
+
     @RequestMapping({"/", "", "/homepage"})
     public String homepage(Model model) {
-model.addAttribute("faqs",faqRepository.findAll());
+        model.addAttribute("faqs",faqRepository.findAll());
         if(securityService.findLoggedInUsername()!=null){
             model.addAttribute("user",userService.findByUsername(securityService.findLoggedInUsername()));
         model.addAttribute("isLoggedIn","yes");}
