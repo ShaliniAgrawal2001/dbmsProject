@@ -3,6 +3,7 @@ package com.shalini.dbms.controllers;
 import com.shalini.dbms.models.Inventory;
 import com.shalini.dbms.models.Product;
 import com.shalini.dbms.models.ProductsInCart;
+import com.shalini.dbms.models.User;
 import com.shalini.dbms.repositories.*;
 import com.shalini.dbms.services.SecurityService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -42,7 +43,8 @@ public class ProductController {
     model.addAttribute("productsInCart",new ProductsInCart());
     model.addAttribute("product",productRepository.findById(id));
     model.addAttribute("inventory", inventoryRepository.findByProductId(id));
-    model.addAttribute("cart",cartRepository.findByCustomerId(userRepository.findByEmail(securityService.findLoggedInUsername()).getId()));
+    if(securityService.findLoggedInUsername()!=null)
+        model.addAttribute("cart",cartRepository.findByCustomerId(userRepository.findByEmail(securityService.findLoggedInUsername()).getId()));
     return "productDetails";
 }
 
@@ -57,6 +59,10 @@ public class ProductController {
 @PostMapping({"/product/{id}"})
     public String addToCart(@PathVariable("id") int id, Model model, @ModelAttribute("productsInCart") ProductsInCart productsInCart)
 {
+    if(securityService.findLoggedInUsername()==null){
+        model.addAttribute("user",new User());
+        model.addAttribute("verification","unknown");
+        return "redirect:/login";}
     productsInCart.setCart(cartRepository.findByCustomerId(userRepository.findByEmail(securityService.findLoggedInUsername()).getId()));
     productsInCart.setProduct(productRepository.findById(id));
 
