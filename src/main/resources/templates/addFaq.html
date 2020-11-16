@@ -80,7 +80,7 @@
 </head>
 <body>
 <div>
-    <form  method="post" th:action="admin/addFaq" th:object="${faq}">
+    <form  method="post" th="admin/addFaq" th:object="${faq}">
         <h2 class="text-warning text-center pt-5">Add FAQ</h2>
         <label>
             <input type="text" class="input" name="question" th:field="*{ques}" placeholder="Enter question" required/>

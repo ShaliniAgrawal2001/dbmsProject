@@ -80,7 +80,7 @@
 </head>
 <body>
 <div>
-    <form  method="post" th:action="admin/addCategory" th:object="${category}">
+    <form  method="post" th="admin/addCategory" th:object="${category}">
         <h2 class="text-warning text-center pt-5">Add Category</h2>
         <label>
             <input type="text" class="input" name="category name" th:field="*{name}" placeholder="Enter category name" required/>
