@@ -3,6 +3,7 @@ package com.shalini.dbms.models;
 public class Category {
     private int id;
     private String name;
+    private  String image;
 
     public int getId() {
         return id;
@@ -20,4 +21,11 @@ public class Category {
         this.name = name;
     }
 
+    public String getImage() {
+        return image;
+    }
+
+    public void setImage(String image) {
+        this.image = image;
+    }
 }

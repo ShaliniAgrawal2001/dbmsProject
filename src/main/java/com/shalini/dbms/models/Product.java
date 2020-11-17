@@ -10,6 +10,7 @@ public class Product {
     private Category category;
     private String brand;
     private String description;
+    private String image;
 
     public int getId() {
         return id;
@@ -65,5 +66,13 @@ public class Product {
 
     public void setDescription(String description) {
         this.description = description;
+    }
+
+    public String getImage() {
+        return image;
+    }
+
+    public void setImage(String image) {
+        this.image = image;
     }
 }

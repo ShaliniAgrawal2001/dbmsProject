@@ -16,9 +16,9 @@
 <body>
 <div id="category">
     <ul type="none" >
-        <li th:each="category : ${categories}"><a th:href="@{/category/{id}(id=${category.getId()})}" >
+        <li th:each="category : ${categories}"><a th:href="@{/category/{id}(id=${category.getId()})}">
             <div class="container">
-                <img th:src="@{/images/{name}.png(name=${category.getName()})}">
+                <img th:src="@{{img}(img=${category.getImage()})}"  style="width:300px;height:300px;">
                 <h2>
                     <span th:text="${category.getName()}"></span>
                 </h2>

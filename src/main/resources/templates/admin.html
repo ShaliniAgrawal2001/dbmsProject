@@ -379,7 +379,7 @@
 <h1>Categories</h1>
 <ul type="none" id="category">
     <li th:each="category : ${categories}">
-        <img th:src="@{/images/{name}.png(name=${category.getName()})}">
+        <img th:src="@{{img}(img=${category.getImage()})}" style="width:300px;height:300px;">
         <h2>
             <span th:text="${category.getName()}"></span>
         </h2>
@@ -402,7 +402,7 @@
                     <div class="row">
                         <div class="col-md-5 col-sm-12 col-xs-12">
                             <div class="product-image">
-        <img class="img-responsive" th:src="@{images/{name}_{id}.jpg(name=${product.getCategory().getName()}, id=${product.getId()})}">
+        <img class="img-responsive" th:src="@{{img}(img=${product.getImage()})}" style="width:300px;height:300px;">
                                 <span class="tag3 special">
 							<span th:text="${product.getDiscount()}"></span>% off
 						</span>

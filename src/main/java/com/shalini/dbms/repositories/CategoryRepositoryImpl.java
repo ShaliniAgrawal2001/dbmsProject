@@ -19,6 +19,7 @@ public class CategoryRepositoryImpl implements CategoryRepository {
             Category category = new Category();
             category.setId(resultSet.getInt("id"));
             category.setName(resultSet.getString("name"));
+            category.setImage(resultSet.getString("image"));
             return category;
         }
     };
@@ -35,8 +36,8 @@ public class CategoryRepositoryImpl implements CategoryRepository {
     }
     @Override
     public void addCategory(Category category) {
-        String sqlQuery = "insert into category(name) values(?)";
-        jdbcTemplate.update(sqlQuery,category.getName());
+        String sqlQuery = "insert into category(name,image) values(?,?)";
+        jdbcTemplate.update(sqlQuery,category.getName(),category.getImage());
     }
     public Category findById(int id)
     {

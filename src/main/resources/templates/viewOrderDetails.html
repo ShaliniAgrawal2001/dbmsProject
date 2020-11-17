@@ -380,7 +380,7 @@
                 <div class="row">
                     <div class="col-md-5 col-sm-12 col-xs-12">
                         <div class="product-image">
-                            <img class="img-responsive" th:src="@{/images/{name}_{id}.jpg(name=${product.getProduct().getCategory().getName()}, id=${product.getProduct().getId()})}">
+                            <img class="img-responsive" th:src="@{{img}(img=${product.getImage()})}" style="width:300px;height:300px;">
                             <span th:if="${product.getProduct().getDiscount()}>0">
                         <span class="tag3 special">
 							<span th:text="${product.getProduct().getDiscount()}"></span>% off

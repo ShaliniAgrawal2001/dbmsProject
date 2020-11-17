@@ -32,6 +32,7 @@ public class ProductRepositoryImpl implements ProductRepository{
             product.setPrice(resultSet.getInt("price"));
             product.setDiscount(resultSet.getInt("discount"));
             product.setDescription(resultSet.getString("description"));
+            product.setImage(resultSet.getString("image"));
             return product;
         }
     };
@@ -43,8 +44,8 @@ public class ProductRepositoryImpl implements ProductRepository{
     }
     public void addProduct(Product product)
     {
-        String sqlQuery = "insert into product(name,price,discount,category_id,brand,description) values(?,?,?,?,?,?)";
-        jdbcTemplate.update(sqlQuery,product.getName(),product.getPrice(),product.getDiscount(),product.getCategory().getId(),product.getBrand(),product.getDescription());
+        String sqlQuery = "insert into product(name,price,discount,category_id,brand,description,image) values(?,?,?,?,?,?,?)";
+        jdbcTemplate.update(sqlQuery,product.getName(),product.getPrice(),product.getDiscount(),product.getCategory().getId(),product.getBrand(),product.getDescription(),product.getImage());
     }
     public List<Product> findDiscounted(){
         String sqlQuery = "select * from product where discount >0";
@@ -66,7 +67,7 @@ public class ProductRepositoryImpl implements ProductRepository{
 
     public void updateProductInfo(Product product)
     {
-        String query = "update product set name='"+product.getName()+"', brand='"+product.getBrand()+"', price='"+product.getPrice()+"', discount='"+product.getDiscount()+"', description='"+product.getDescription()+"' where id='"+product.getId()+"'";
+        String query = "update product set name='"+product.getName()+"', brand='"+product.getBrand()+"', price='"+product.getPrice()+"', discount='"+product.getDiscount()+"', description='"+product.getDescription()+"', image='"+product.getImage()+"' where id='"+product.getId()+"'";
         jdbcTemplate.update(query);
     }
 }
