@@ -44,9 +44,7 @@ public class OrderRepositoryImpl implements OrderRepository {
     public void addRow(Order order) {
 
             String query = "insert into orders(customer_id, total_amount, time_of_purchase,recieved_from_store) values(?,?,?,?)";
-            DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss");
-            LocalDateTime now = LocalDateTime.now();
-            jdbcTemplate.update(query, order.getCustomer().getId(),order.getTotalAmount(),dtf.format(now),"NO");
+            jdbcTemplate.update(query, order.getCustomer().getId(),order.getTotalAmount(),order.getTimeOfPurchase(),"NO");
         }
 
     public List<Order> notRecievedOrder()

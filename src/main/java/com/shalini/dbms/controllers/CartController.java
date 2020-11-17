@@ -76,10 +76,14 @@ model.addAttribute("message","none");
             Order order = new Order();
             DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss");
             LocalDateTime now = LocalDateTime.now();
+            String time=dtf.format(now);
             order.setTotalAmount(cartRepository.findByCustomerId(userService.findByUsername(securityService.findLoggedInUsername()).getId()).getTotalPrice());
             order.setCustomer(userService.findByUsername(securityService.findLoggedInUsername()));
+            order.setTimeOfPurchase(time);
             orderRepository.addRow(order);
-            Order order1 = orderRepository.getId(dtf.format(now));
+            int j=order.getId();
+            System.out.println(j);
+            Order order1 = orderRepository.getId(time);
             productsBoughtByCustomerRepository.addRow(productsInCartRepository.findProductsByCartId(cartRepository.findByCustomerId(userService.findByUsername(securityService.findLoggedInUsername()).getId()).getId()),order1.getId());
             inventoryRepository.updateQty(productsInCartRepository.findProductsByCartId(cartRepository.findByCustomerId(userService.findByUsername(securityService.findLoggedInUsername()).getId()).getId()));
             try {
