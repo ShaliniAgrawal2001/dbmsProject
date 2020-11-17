@@ -82,9 +82,14 @@ public class LoginController {
     @RequestMapping("/shopAddress")
     public String shopAddress(Model model)
     {
-
+        if(vendorShopAddressRepository.findByVendorId(userService.findByUsername(securityService.findLoggedInUsername()).getId())==null)
+        {
         model.addAttribute("address",new VendorShopAddress());
         return "shopAddress";
+    }
+        else{
+            model.addAttribute("shopaddress",vendorShopAddressRepository.findByVendorId(userService.findByUsername(securityService.findLoggedInUsername()).getId()));
+            return "editAddress";}
     }
 
     @PostMapping("/shopAddress")
@@ -93,7 +98,7 @@ public class LoginController {
         vendorShopAddress.setVendor(userService.findByUsername(securityService.findLoggedInUsername()));
         vendorShopAddressRepository.add(vendorShopAddress);
         model.addAttribute("shopaddress",vendorShopAddressRepository.findByVendorId(userService.findByUsername(securityService.findLoggedInUsername()).getId()));
-        return "editaddress";
+        return "editAddress";
     }
     @RequestMapping("/proposals")
     public String proposals(Model model)
