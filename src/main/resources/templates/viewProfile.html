@@ -35,6 +35,13 @@
 						Your Details
 					</span>
                 <span class="txt1 p-b-11">
+						Email ID
+					</span>
+                <div class="wrap-input100 validate-input m-b-36">
+                    <input class="input100" name="email"  type="text"  th:field="*{email}" th:value="${user.getEmail()}" readonly>
+                    <span class="focus-input100"></span>
+                </div>
+                <span class="txt1 p-b-11">
 						First Name
 					</span>
                 <div class="wrap-input100 validate-input m-b-36" data-validate = "First Name required">
