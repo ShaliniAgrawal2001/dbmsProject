@@ -2,7 +2,47 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link href="vendor1/bootstrap.min.css" rel="stylesheet">
+    <link href="css/business-frontpage.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="bootstrap/css/bootstrap.min.css" />
+    <link rel="stylesheet" type="text/css" href="font-awesome/css/font-awesome.min.css" />
+    <script type="text/javascript" src="js/jquery-1.10.2.min.js"></script>
+    <script type="text/javascript" src="bootstrap/js/bootstrap.min.js"></script>
     <style>
+
+        #nav ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+            background-color: #333;
+            position: -webkit-sticky; /* Safari */
+            position: sticky;
+            top: 0;
+        }
+
+        #nav li {
+            float: left;
+        }
+
+        #nav li a {
+            display: block;
+            color: white;
+            text-align: center;
+            padding: 14px 16px;
+            text-decoration: none;
+        }
+
+        #nav li a:hover {
+            background-color: #111;
+        }
+        .image {
+            padding-top: 56px;
+        }
+
         #category ul{
             display: block;
         }
@@ -10,10 +50,47 @@
             float: left;
             width: 33.33%;
         }
+
     </style>
     <title>Product Categories</title>
 </head>
 <body>
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top" style="padding-bottom: 0px;margin-bottom: 0px">
+    <div class="container">
+        <span th:if="${isLoggedIn}=='yes'">
+            <a class="navbar-brand" href="/welcome">  Hi, <span th:text="${user.getFirstName()}"></span>! </a></span>
+        <span th:if="${isLoggedIn}=='no'">
+                <ul class="navbar-nav ml-auto">
+          <li>  <a class="nav-link" href="/login">Login</a></li>
+            <li><a class="nav-link" href="/register">Register</a></li>
+                    </ul>
+            </span>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="/">Home
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/faqs">FAQs
+                        </a>
+                </li>
+                <li class="nav-item active">
+                    <a class="nav-link" href="/categories">Product Categories<span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="bestOffers">Best Offers</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+<header>
+    <img th:src="@{images/magnet.png}" width="100%" height="300" />
+</header>
 <div id="category">
     <ul type="none" >
         <li th:each="category : ${categories}"><a th:href="@{/category/{id}(id=${category.getId()})}">

@@ -22,6 +22,7 @@ public class FAQRepositoryImpl implements FAQRepository {
         @Override
         public FAQ mapRow(ResultSet resultSet, int i) throws SQLException {
             FAQ faq = new FAQ();
+            faq.setId(resultSet.getInt("id"));
             faq.setAns(resultSet.getString("ans"));
             faq.setQues(resultSet.getString("ques"));
             return faq;
@@ -35,6 +36,7 @@ public class FAQRepositoryImpl implements FAQRepository {
     public List<FAQ> findAll ()
     {
         String query = "select * from faq";
-        return jdbcTemplate.query(query,faqRowMapper);
+        List<FAQ> faqs=jdbcTemplate.query(query,faqRowMapper);
+        return faqs;
     }
 }
