@@ -41,7 +41,7 @@
     <title>homepage</title>
 </head>
 <body>
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top" style="padding-bottom: 0px;margin-bottom: 0px; padding-top: 0px;margin-top: 0px;">
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
     <div class="container">
         <span th:if="${isLoggedIn}=='yes'">
             <a class="navbar-brand" href="/welcome">  Hi, <span th:text="${user.getFirstName()}"></span>! </a></span>
@@ -74,7 +74,7 @@
         </div>
     </div>
 </nav>
-<header class="image">
+<header>
                 <img th:src="@{images/magnet.png}" width="100%" height="300" />
 </header>
 <div class="container">
