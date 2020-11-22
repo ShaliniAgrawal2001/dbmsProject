@@ -158,6 +158,11 @@
             text-align: center
         }
 
+        .mydiv{
+            min-height: 100px;
+            overflow: hidden;
+        }
+
         .prod-wrap .product-image span.sale {
             background-color: #57889c;
         }
@@ -312,6 +317,7 @@
     <title>Category Products</title>
 </head>
 <body>
+<div class="mydiv">
 <ul type="none">
     <li th:each="product : ${categoryProducts}"><a th:href="@{/product/{id}(id=${product.getId()})}">
 <div class="container">
@@ -367,7 +373,7 @@
     </a>
  </li>
 </ul>
-
+</div>
 </body>
 </html>
 

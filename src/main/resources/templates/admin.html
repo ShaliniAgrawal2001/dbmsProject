@@ -364,7 +364,10 @@
             float: left;
             width: 33.33%;
         }
-
+        .mydiv{
+              min-height: 100px;
+            overflow: hidden;
+        }
         </style>
     <title>Admin Page</title>
 </head>
@@ -377,6 +380,7 @@
     <a href="/welcome">Go to Main Page</a>
 </h4>
 <h1>Categories</h1>
+<div class="mydiv">
 <ul type="none" id="category">
     <li th:each="category : ${categories}">
         <img th:src="@{{img}(img=${category.getImage()})}" style="width:300px;height:300px;">
@@ -386,13 +390,18 @@
         <a th:href="@{/admin/addProduct/{id} (id=${category.getId()})}">
         <button value="Add Product In This Category">Add Product In This Category</button>
         </a>
-
     </li>
 </ul>
+</div>
+<div>
 <a href="admin/addCategory">
     <button value="Add Category">Add Category</button>
 </a>
+</div>
+<div>
 <h1>Products</h1>
+</div>
+<div class="mydiv">
 <ul type="none" id="product">
     <li th:each="product : ${products}">
         <div class="container">
@@ -440,6 +449,6 @@
         </div>
     </li>
 </ul>
-
+</div>
 </body>
 </html>

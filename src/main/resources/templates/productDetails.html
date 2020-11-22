@@ -308,6 +308,10 @@
             float: left;
             width: 50%;
         }
+        .mydiv{
+            min-height: 100px;
+            overflow: hidden;
+        }
     </style>
     <title>Product Details</title>
 </head>
@@ -315,6 +319,7 @@
 <span th:if="${qty}=='no'">
     <p align="center">  Desired Quantity is not in Stock!</p>
 </span>
+<div class="mydiv">
 <div class="container">
     <div class="col-xs-12 col-md-6">
         <!-- First product box start here-->
@@ -380,7 +385,7 @@
 </div>
 
 
-
+</div>
 
 
 </body>

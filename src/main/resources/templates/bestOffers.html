@@ -5,10 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="">
     <meta name="author" content="">
-    <link href="vendor1/bootstrap.min.css" rel="stylesheet">
-    <link href="css/business-frontpage.css" rel="stylesheet">
-    <script type="text/javascript" src="js/jquery-1.10.2.min.js"></script>
-    <script type="text/javascript" src="bootstrap/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" integrity="sha512-dTfge/zgoMYpP7QbHy4gWMEGsbsdZeCXz7irItjcC3sPUFtf0kuFbDz/ixG7ArTxmDjLXDmezHubeNikyKGVyQ==" crossorigin="anonymous">
     <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
     <style>
@@ -314,78 +311,10 @@
                 position: relative
             }
         }
-        .sidenav {
-            height: 100%;
-            width: 0;
-            position: fixed;
-            z-index: 1;
-            top: 0;
-            left: 0;
-            background-color: #111;
-            overflow-x: hidden;
-            transition: 0.5s;
-            padding-top: 60px;
+        .mydiv{
+            min-height: 100px;
+            overflow: hidden;
         }
-
-        .sidenav a {
-            padding: 8px 8px 8px 32px;
-            text-decoration: none;
-            font-size: 25px;
-            color: #818181;
-            display: block;
-            transition: 0.3s;
-        }
-
-        .sidenav a:hover {
-            color: #f1f1f1;
-        }
-
-        .sidenav .closebtn {
-            position: absolute;
-            top: 0;
-            right: 25px;
-            font-size: 36px;
-            margin-left: 50px;
-        }
-
-        @media screen and (max-height: 450px) {
-            .sidenav {padding-top: 15px;}
-            .sidenav a {font-size: 18px;}
-        }
-        .image {
-            padding-top: 56px;
-        }
-
-         #nav ul {
-             list-style-type: none;
-             margin: 0;
-             padding: 0;
-             overflow: hidden;
-             background-color: #333;
-             position: -webkit-sticky; /* Safari */
-             position: sticky;
-             top: 0;
-         }
-
-        #nav li {
-            float: left;
-        }
-
-        #nav li a {
-            display: block;
-            color: white;
-            text-align: center;
-            padding: 14px 16px;
-            text-decoration: none;
-        }
-
-        #nav li a:hover {
-            background-color: #111;
-        }
-        .image {
-            padding-top: 56px;
-        }
-
         </style>
     <title>Best Offers</title>
 </head>
@@ -426,6 +355,7 @@
 <header>
     <img th:src="@{images/magnet.png}" width="100%" height="300" />
 </header>
+<div class="mydiv">
 <div id="product">
     <ul type="none" >
         <li th:each="product : ${products}"> <a th:href="@{/product/{id}(id=${product.getId()})}" >
@@ -482,6 +412,7 @@
         </a>
         </li>
     </ul>
+</div>
 </div>
 </body>
 </html>

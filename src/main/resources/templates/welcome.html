@@ -30,6 +30,10 @@
             border: 1px solid #CEEFFF;
             padding-top: 40px;
         }
+        .mydiv{
+            min-height: 100px;
+            overflow: hidden;
+        }
 
         .prod-info-main .product-deatil {
             border-bottom: 1px solid #dfe5e9;
@@ -408,6 +412,7 @@
 </span>
 <img style="padding-top: 20px" th:src="@{images/magnet.png}" width="100%" height=300 />
 <h1>All Categories</h1>
+<div class="mydiv">
 <div id="category">
 <ul type="none" >
     <li th:each="category : ${categories}"><a th:href="@{/category/{id}(id=${category.getId()})}"  >
@@ -421,8 +426,10 @@
    </li>
 </ul>
 </div>
+</div>
 <br>
 <h2>Best Offers</h2>
+<div class="mydiv">
 <div id="product">
 <ul type="none" >
     <li th:each="product : ${products}"> <a th:href="@{/product/{id}(id=${product.getId()})}" >
@@ -479,6 +486,7 @@
     </a>
     </li>
 </ul>
+</div>
 </div>
 <h1 align="right" id="feedback">Give Feedback</h1>
 <span align="right" marginwidth="200" marginheight="200">

@@ -358,18 +358,15 @@
             float: left;
             width: 33.33%;
         }
-
-        /*#feedback h1 {*/
-        /*    margin-right: 10;*/
-        /*}*/
-
-        /*#Feedback form form{*/
-        /*    margin-right: 10;*/
-        /*}*/
+        .mydiv{
+            min-height: 100px;
+            overflow: hidden;
+        }
     </style>
     <title>View Order Details</title>
 </head>
 <body>
+<div class="mydiv">
 <ul type="none">
     <li th:each="product:${allproducts}">
 
@@ -418,7 +415,7 @@
     </a>
     </li>
 </ul>
-
+</div>
 </body>
 </html>
 

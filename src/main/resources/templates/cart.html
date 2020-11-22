@@ -308,10 +308,15 @@
             float: left;
             width: 50%;
         }
+        .mydiv{
+            min-height: 100px;
+            overflow: hidden;
+        }
     </style>
     <title>Cart</title>
 </head>
 <body>
+<div class="mydiv">
 <ul type="none">
     <li th:each="product : ${cartProducts}"> <a th:href="@{/product/{id}(id=${product.getProduct().getId()})}" >
         <div class="container">
@@ -360,6 +365,7 @@
     </a>
     </li>
 </ul>
+</div>
 <span th:unless="${message}=='none'">
     <span th:text="${message}"></span>
 </span>
