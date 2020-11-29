@@ -59,7 +59,7 @@ public class VendorShopAddressRepositoryImpl implements VendorShopAddressReposit
 
     public void update(VendorShopAddress vendorShopAddress)
     {
-        String query = "update vendorShopAddress set shop_name='"+vendorShopAddress.getShopName()+"', shop_no='"+vendorShopAddress.getShopNo()+"', building_name='"+vendorShopAddress.getBuildingName()+"', landmark='"+vendorShopAddress.getLandmark()+"', city='"+vendorShopAddress.getCity()+"', pincode='"+"' where vendor_id='"+vendorShopAddress.getVendor().getId()+"'";
+        String query = "update vendorShopAddress set shop_name='"+vendorShopAddress.getShopName()+"', shop_no='"+vendorShopAddress.getShopNo()+"', building_name='"+vendorShopAddress.getBuildingName()+"', landmark='"+vendorShopAddress.getLandmark()+"', city='"+vendorShopAddress.getCity()+"' where vendor_id='"+vendorShopAddress.getVendor().getId()+"'";
         jdbcTemplate.update(query);
     }
 }
