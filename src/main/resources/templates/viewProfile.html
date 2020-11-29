@@ -97,13 +97,6 @@
                     <input class="input100" name="state" type="text" th:field="*{state}" th:value="${user.getState()}" required>
                     <span class="focus-input100"></span>
                 </div>
-                <span class="txt1 p-b-11">
-						Pincode
-					</span>
-                <div class="wrap-input100 validate-input m-b-36" data-validate = "Pincode is required">
-                    <input class="input100" name="pincode"  type="text" th:field="*{pincode}" pattern="^[0-9]{6}$" th:value="${user.getPincode()}" required>
-                    <span class="focus-input100"></span>
-                </div>
                 <div class="container-login100-form-btn">
 
         <button class="login100-form-btn" name="Edit Profile" type="submit" value="Edit Profile" > Edit Profile</button>
