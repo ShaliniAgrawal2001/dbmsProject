@@ -36,15 +36,14 @@ public class VendorShopAddressRepositoryImpl implements VendorShopAddressReposit
             vendorShopAddress.setLandmark(resultSet.getString("landmark"));
             vendorShopAddress.setCity(resultSet.getString("city"));
             vendorShopAddress.setState(resultSet.getString("state"));
-            vendorShopAddress.setPincode(resultSet.getString("pincode"));
             return vendorShopAddress;
         }
     };
 
     public void add(VendorShopAddress vendorShopAddress)
     {
-        String query="insert into vendorShopAddress(vendor_id,shop_name,shop_no,building_name,landmark,city,state,pincode) values(?,?,?,?,?,?,?,?)";
-        jdbcTemplate.update(query,vendorShopAddress.getVendor().getId(),vendorShopAddress.getShopName(),vendorShopAddress.getShopNo(),vendorShopAddress.getBuildingName(),vendorShopAddress.getLandmark(),vendorShopAddress.getCity(),vendorShopAddress.getState(),vendorShopAddress.getPincode());
+        String query="insert into vendorShopAddress(vendor_id,shop_name,shop_no,building_name,landmark,city,state) values(?,?,?,?,?,?,?)";
+        jdbcTemplate.update(query,vendorShopAddress.getVendor().getId(),vendorShopAddress.getShopName(),vendorShopAddress.getShopNo(),vendorShopAddress.getBuildingName(),vendorShopAddress.getLandmark(),vendorShopAddress.getCity(),vendorShopAddress.getState());
 
     }
 
@@ -60,7 +59,7 @@ public class VendorShopAddressRepositoryImpl implements VendorShopAddressReposit
 
     public void update(VendorShopAddress vendorShopAddress)
     {
-        String query = "update vendorShopAddress set shop_name='"+vendorShopAddress.getShopName()+"', shop_no='"+vendorShopAddress.getShopNo()+"', building_name='"+vendorShopAddress.getBuildingName()+"', landmark='"+vendorShopAddress.getLandmark()+"', city='"+vendorShopAddress.getCity()+"', pincode='"+vendorShopAddress.getPincode()+"' where vendor_id='"+vendorShopAddress.getVendor().getId()+"'";
+        String query = "update vendorShopAddress set shop_name='"+vendorShopAddress.getShopName()+"', shop_no='"+vendorShopAddress.getShopNo()+"', building_name='"+vendorShopAddress.getBuildingName()+"', landmark='"+vendorShopAddress.getLandmark()+"', city='"+vendorShopAddress.getCity()+"', pincode='"+"' where vendor_id='"+vendorShopAddress.getVendor().getId()+"'";
         jdbcTemplate.update(query);
     }
 }

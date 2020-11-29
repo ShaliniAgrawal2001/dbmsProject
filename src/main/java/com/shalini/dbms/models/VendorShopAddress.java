@@ -8,7 +8,6 @@ public class VendorShopAddress {
     private String landmark;
     private String state;
     private String city;
-    private String pincode;
     private String buildingName;
 
     public int getId() {
@@ -65,14 +64,6 @@ public class VendorShopAddress {
 
     public void setCity(String city) {
         this.city = city;
-    }
-
-    public String getPincode() {
-        return pincode;
-    }
-
-    public void setPincode(String pincode) {
-        this.pincode = pincode;
     }
 
     public String getBuildingName() {

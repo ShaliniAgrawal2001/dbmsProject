@@ -39,7 +39,6 @@ public class UserRepositoryImpl implements UserRepository {
                     user.setBuildingName(resultSet.getString("building_or_shop_name"));
                     user.setLandmark(resultSet.getString("landmark"));
                     user.setCity(resultSet.getString("city"));
-                    user.setPincode(resultSet.getString("pincode"));
                     user.setState(resultSet.getString("state"));
                     return user;
                 }
@@ -62,8 +61,8 @@ public class UserRepositoryImpl implements UserRepository {
 
     @Override
     public void save(User user) {
-        String query = "insert into user(first_name,last_name,email,phone_no,password,status,role,home_or_shop_no,building_or_shop_name,landmark,city,state,pincode) values(?,?,?,?,?,?,?,?,?,?,?,?,?)";
-        jdbcTemplate.update(query,user.getFirstName(),user.getLastName(),user.getEmail(),user.getPhoneNo(),user.getPassword(),user.getStatus(),user.getRole(),user.getHomeNo(),user.getBuildingName(),user.getLandmark(),user.getCity(),user.getState(),user.getPincode());
+        String query = "insert into user(first_name,last_name,email,phone_no,password,status,role,home_or_shop_no,building_or_shop_name,landmark,city,state) values(?,?,?,?,?,?,?,?,?,?,?)";
+        jdbcTemplate.update(query,user.getFirstName(),user.getLastName(),user.getEmail(),user.getPhoneNo(),user.getPassword(),user.getStatus(),user.getRole(),user.getHomeNo(),user.getBuildingName(),user.getLandmark(),user.getCity(),user.getState());
     }
 
     @Override
@@ -91,7 +90,6 @@ public class UserRepositoryImpl implements UserRepository {
                 user.setBuildingName(resultSet.getString("building_or_shop_name"));
                 user.setLandmark(resultSet.getString("landmark"));
                 user.setCity(resultSet.getString("city"));
-                user.setPincode(resultSet.getString("pincode"));
                 user.setState(resultSet.getString("state"));
                 return user;
             }
@@ -102,7 +100,7 @@ public class UserRepositoryImpl implements UserRepository {
     {
         int id=user.getId();
         System.out.println(id);
-        String query = "update user set first_name='"+user.getFirstName()+"', last_name='"+user.getLastName()+"', phone_no='"+user.getPhoneNo()+"', home_or_shop_no='"+user.getHomeNo()+"', building_or_shop_name='"+user.getBuildingName()+"', landmark='"+user.getLandmark()+"', city='"+user.getCity()+"', state='"+user.getState()+"', pincode='"+user.getPincode()+"' where id='"+user.getId()+"'";
+        String query = "update user set first_name='"+user.getFirstName()+"', last_name='"+user.getLastName()+"', phone_no='"+user.getPhoneNo()+"', home_or_shop_no='"+user.getHomeNo()+"', building_or_shop_name='"+user.getBuildingName()+"', landmark='"+user.getLandmark()+"', city='"+user.getCity()+"', state='"+user.getState()+"' where id='"+user.getId()+"'";
         jdbcTemplate.update(query);
     }
 }
