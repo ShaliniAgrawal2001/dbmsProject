@@ -386,6 +386,9 @@
         Available Sizes: <span th:text="${proposal.getAvailableSizes()}"></span><br>
                                     Vendor Name: <span th:text="${proposal.getVendor().getFirstName()}"></span><br>
                                     Contact Number: <span th:text="${proposal.getVendor().getPhoneNo()}"></span><br>
+                                    <form method="post" th:action="@{/admin/viewAddress/{id}(id=${proposal.getVendor().getId()})}" >
+    <button value="submit" type="submit">Show Vendor's Shop Address</button>
+</form>
                                 </h5>
                             </div>
                         </div>

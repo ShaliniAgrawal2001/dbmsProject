@@ -331,4 +331,10 @@ public String updateProductInfo(@PathVariable("id") int id, Model model, @ModelA
         faqRepository.addFAQ(faq);
         return "redirect:/admin";
     }
+    @RequestMapping("/admin/viewAddress/{id}")
+    public String viewAddress(Model model,@PathVariable("id") int id)
+    {
+        model.addAttribute("address",vendorShopAddressRepository.findByVendorId(id));
+        return "vendorAddress";
+    }
 }

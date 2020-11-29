@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Vendor Shop Address</title>
+</head>
+<body>
+<br>
+<h1 align="center">Vendor Shop Address</h1>
+<div align="center" style="font-size: medium; font-family: Verdana">
+<span style="font-size: large">Shop Name: <span th:text="${address.getShopName()}"></span></span><br><br>
+<span style="font-size: large">Shop Number: <span th:text="${address.getShopNo()}"></span></span><br><br>
+<span style="font-size: large">Building Name: <span th:text="${address.getBuildingName()}"></span></span><br><br>
+<span style="font-size: large">Landmark: <span th:text="${address.getLandmark()}"></span></span><br><br>
+<span style="font-size: large">State: <span th:text="${address.getState()}"></span></span><br><br>
+<span style="font-size: large">City: <span th:text="${address.getCity()}"></span></span><br><br>
+<span style="font-size: large">Pincode: <span th:text="${address.getPincode()}"></span></span><br><br>
+</div>
+</body>
+</html>
